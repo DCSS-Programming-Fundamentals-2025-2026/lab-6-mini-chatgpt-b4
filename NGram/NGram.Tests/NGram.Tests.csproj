@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -22,6 +22,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NGram\NGram.csproj" />
+    <ProjectReference Include="..\Lib.Corpus\Lib.Corpus.csproj" />
+    <ProjectReference Include="..\Lib.Tokenization\Lib.Tokenization.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\data\showcase.txt" Link="data\showcase.txt" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

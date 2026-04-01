@@ -64,4 +64,11 @@ public class WordTokenizer : ITokenizer
     {
         return new { words = _vocabulary.GetPayload() };
     }
+
+    public static WordTokenizer BuildFromText(string text)
+    {
+        WordVocabulary vocab = new WordVocabulary();
+        vocab.BuildFromText(text);
+        return new WordTokenizer(vocab);
+    }
 }

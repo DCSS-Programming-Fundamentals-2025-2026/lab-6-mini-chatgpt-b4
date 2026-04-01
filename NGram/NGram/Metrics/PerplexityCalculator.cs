@@ -35,5 +35,28 @@
 
             return perplexity;
         }
+
+        public static double ComputePerplexity(ReadOnlySpan<int> tokens, Func<ReadOnlySpan<int>, float[]> nextScore)
+        {
+            if (tokens.Length < 2)
+            {
+                return 0;
+            }
+
+            double logSum = 0;
+            for (int i = 1; i < tokens.Length; i++)
+            {
+                int[] context = tokens.Slice(0, i).ToArray();
+                float[] scores = nextScore(context);
+                float prob = scores[tokens[i]];
+                if (prob == 0) 
+                {
+                    prob = 1e-10f;
+                }
+                logSum += Math.Log(prob);
+            }
+            int n = tokens.Length - 1;
+            return Math.Exp(-logSum / n);
+        }
     }
 }

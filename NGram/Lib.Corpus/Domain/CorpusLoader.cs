@@ -33,6 +33,12 @@ public class CorpusLoader : ICorpusLoader
         return LoadFromText(content, options);
     }
 
+    public static CorpusClass Load(string path, CorpusLoadOptions? options = null)
+    {
+        CorpusLoader loader = new CorpusLoader(new CorpusTextNormalizer(), new CorpusSplitter(), new DefaultFileSystem());
+        return loader.Load(path, options);
+    }
+
     public CorpusClass LoadFromText(string text, CorpusLoadOptions? options)
     {
         if (options == null)
