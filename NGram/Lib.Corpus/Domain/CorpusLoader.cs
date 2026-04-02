@@ -27,16 +27,16 @@ public class CorpusLoader : ICorpusLoader
         }
         else
         {
-            content = options.FallBack;
+            content = options.FallBack ?? string.Empty;
         }
 
         return LoadFromText(content, options);
     }
 
-    public static CorpusClass Load(string path, CorpusLoadOptions? options = null)
+    public static CorpusClass Load(string path)
     {
         CorpusLoader loader = new CorpusLoader(new CorpusTextNormalizer(), new CorpusSplitter(), new DefaultFileSystem());
-        return loader.Load(path, options);
+        return loader.Load(path, null);
     }
 
     public CorpusClass LoadFromText(string text, CorpusLoadOptions? options)
