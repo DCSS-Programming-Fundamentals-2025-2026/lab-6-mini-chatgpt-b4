@@ -8,4 +8,13 @@
     <DefaultItemExcludes>$(DefaultItemExcludes);src\**\obj\**;src\**\bin\**</DefaultItemExcludes>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lib.Corpus\Lib.Corpus.csproj" />
+    <ProjectReference Include="..\Lib.Tokenization\Lib.Tokenization.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\data\showcase.txt" Link="data\showcase.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
